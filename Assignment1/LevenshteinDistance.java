@@ -7,7 +7,7 @@
  * The Levenshtein distance is a number that tells you how different two strings are. The higher the number, the more different the two strings are.
  * For more information: https://en.wikipedia.org/wiki/Levenshtein_distance
  */
-
+package Assignment1;
 public class LevenshteinDistance {
 
     public double Change_Ratio = 0.0;           // attribute used to measure the change percentage.
