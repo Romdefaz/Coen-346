@@ -10,7 +10,7 @@ public class MasterThread {
         File file = new File ("C:/Users/genet/Desktop/vm_1.txt");
         Scanner scan = new Scanner(file); 
 
-        System.out.println(scan.nextLine());
+        
 
     }
     
