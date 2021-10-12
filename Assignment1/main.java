@@ -8,8 +8,8 @@ public class  main extends Thread {
      
 
     public static void main (String [] args){
-        Master master = new Master("C:\\Users\\chris\\OneDrive\\Desktop");
-        master.start();
+        Master master = new Master("C:\\Users\\chris\\OneDrive\\Desktop"); //Creates master thread
+        master.start(); //run masterthread
     }
     
 }
