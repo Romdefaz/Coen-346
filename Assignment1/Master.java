@@ -7,10 +7,10 @@ public class Master extends Thread {
     public String filename;
     public static ArrayList<String> logs = new ArrayList<String>(); //Usage of array to avoid constantly using bufferReader
     public int wCount; ////worker counter
-    public static int countVulnerabilities; //vulnerability counter
-    public int countLines; 
-    public double approximateAvg;
-    public double previousAvg;
+    public static int cntVuln; //vulnerability counter
+    public int cntLines; 
+    public double approxAvg;
+    public double prevAvg;
     public static ArrayList<WorkerThread> w = new ArrayList<WorkerThread>();
     public static int currentWorkerNumber;
 
@@ -32,24 +32,24 @@ public class Master extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        countLines = logs.size();
-        this.approximateAvg = 0;
-        this.previousAvg = 0;
+        cntLines = logs.size();
+        this.approxAvg = 0;
+        this.prevAvg = 0;
         wCount = 0;
         currentWorkerNumber = 2;
     }
 
 
-    public double calculateApproximateAvg(){ //calculate an approximate
-            return (double) countVulnerabilities/countLines;
+    public double calcAppAvg(){ //calculate an approximate
+            return (double) cntVuln/cntLines;
         }
     
-    public void incrementWorkers(){ // increments worker by 2
+    public void incWorkers(){ // increments worker by 2
             currentWorkerNumber += 2;
         }
     
-    public void appendWorkers2(){ // adds 2 extra workers to the array and runs them
-            incrementWorkers();
+    public void appWorkers2(){ // adds 2 extra workers to the array and runs them
+            incWorkers();
             w.clear();
             for(int i=0; i<currentWorkerNumber; i++){
                 w.add(new WorkerThread(wCount));
@@ -58,7 +58,7 @@ public class Master extends Thread {
             startWorkers();
         }
     
-    public void appendWorkers(){  // create workers and runs them (updates the array)
+    public void appWorkers1(){  // create workers and runs them (updates the array)
             w.clear();
             for(int i=0; i<currentWorkerNumber; i++){
                 w.add(new WorkerThread(wCount));
@@ -82,7 +82,7 @@ public class Master extends Thread {
         }
 
     public void setCountVulnerabilities(int countVul){ // count vulnerabilities
-            countVulnerabilities = countVul;
+            cntVuln = countVul;
             System.out.println("Vulnerabilities found in total: "+countVul);
         }
     
